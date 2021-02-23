@@ -7,9 +7,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var bookRouter = require('./routes/book');
 var courseRouter = require('./routes/course');
+const basicAuth = require('express-basic-auth');
 
 var app = express();
 
+app.use(basicAuth({users: { 'admin': '1234' }}))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
